@@ -1,13 +1,13 @@
 <template>
   <v-app id="inspire">
-    <v-app-bar app color="white" flat>
+    <v-app-bar app flat>
       <v-app-bar-nav-icon
         v-if="$vuetify.breakpoint.smAndDown"
         @click.stop="drawer = !drawer"
       ></v-app-bar-nav-icon>
 
       <!--keeps tabs centered... kinda hacky-->
-      <div style="width: 160px" />
+      <div style="width: 310px" />
 
       <v-tabs v-if="$vuetify.breakpoint.mdAndUp" centered class="ml-n9">
         <v-tab
