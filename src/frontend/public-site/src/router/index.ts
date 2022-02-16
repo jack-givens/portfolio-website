@@ -7,19 +7,25 @@ export const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/Home.vue'),
+    meta: {
+      icon: 'mdi-home'
+    }
   },
   {
-    path: '/portfolio',
+    path: '/About',
+    name: 'About',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    meta: { icon: 'mdi-account' }
+  },
+  {
+    path: '/Portfolio',
     name: 'Portfolio',
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/ComingSoon.vue')
-  },
-  {
-    path: '/blog',
-    name: 'Blog',
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/ComingSoon.vue')
+      import(/* webpackChunkName: "about" */ '../views/Projects.vue'),
+    meta: { icon: 'mdi-folder-multiple' }
   }
 ];
 
