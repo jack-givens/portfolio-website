@@ -1,0 +1,50 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Frontend Site CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "src/frontend/public-site/**"
+      - ".github/workflows/public-site.yml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: "src/frontend/public-site"
+    env:
+      S3_BUCKET_NAME: jackgivens.dev
+      CLOUDFRONT_ID: ${{ secrets.CLOUDFRONT_ID }}
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 14
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14.x
+        cache: 'npm'
+        cache-dependency-path: 'src/frontend/public-site/package-lock.json'
+    
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-region: us-east-1
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    - name: Install
+      run: npm ci
+      
+    - name: Build
+      run: npm run build
+      
+    - name: Deploy
+      run: aws s3 sync --delete dist/ s3://$S3_BUCKET_NAME
+      
+    - name: Invalidate
+      run: aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
