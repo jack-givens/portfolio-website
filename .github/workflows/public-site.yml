@@ -31,7 +31,13 @@ jobs:
         node-version: 14.x
         cache: 'npm'
         cache-dependency-path: 'src/frontend/public-site/package-lock.json'
-        
+    
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: $AWS_ACCESS_KEY_ID
+        aws-secret-access-key: $AWS_SECRET_ACCESS_KEY
+
     - name: Install
       run: npm ci
       
@@ -39,7 +45,7 @@ jobs:
       run: npm run build
       
     - name: Deploy
-      run: aws s3 sync --acl public-read --delete dist/ s3://$S3_BUCKET_NAME
+      run: aws s3 sync --delete dist/ s3://$S3_BUCKET_NAME
       
     - name: Invalidate
       run: aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
