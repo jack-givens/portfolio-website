@@ -46,7 +46,7 @@ const projectData: Project[] = [
     subtitle: 'Mobile Rhythm Game',
     description:
       'A competitive, multiplayer rhythm game akin to stepmania or tap-tap revenge, for IOS and Android',
-    image: './Capture.png',
+    image: './Capture.PNG',
     tech: ['Unity3D', 'Firebase']
   },
   {
