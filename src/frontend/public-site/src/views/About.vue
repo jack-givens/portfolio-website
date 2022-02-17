@@ -23,51 +23,27 @@
         </p>
         <v-subheader>Experience</v-subheader>
         <v-divider />
-        <v-row>
-          <v-col
-            v-for="(item, index) in listItems"
-            :key="index"
-            cols="12"
-            lg="4"
-          >
+        <v-row no-gutters>
+          <v-col v-for="(item, index) in listItems" :key="index" cols="12">
             <bullet-list v-bind="item" />
           </v-col>
         </v-row>
         <div class="d-flex justify-space-between">
-          <v-subheader>Knowledge</v-subheader>
-          <div class="d-flex align-center">
-            <dark-chip v-for="(k, i) in key" :key="i" :color="skillColor(k)">
-              {{ k.name }}
-            </dark-chip>
-            <!-- <dark-chip color="primary">Language</dark-chip>
-            <dark-chip color="secondary">Framework</dark-chip>
-            <dark-chip color="accent">Technology</dark-chip> -->
-          </div>
+          <v-subheader>Skills</v-subheader>
         </div>
-        <!-- <v-subheader>Knowledge</v-subheader> -->
         <v-divider />
         <v-progress-linear indeterminate v-if="loading" />
         <p>
-          <span class="mr-2">Experienced at:</span>
-          <dark-chip
+          <v-chip
             v-for="(skill, index) in groupedSkills.learned"
             :key="index"
-            :color="skillColor(skill)"
+            label
+            outlined
+            color="accent"
           >
             {{ skill.name }}
-          </dark-chip>
+          </v-chip>
         </p>
-        <p>
-          <span class="mr-2">Would like to learn more of:</span>
-          <dark-chip
-            v-for="(skill, index) in groupedSkills.unlearned"
-            :key="index"
-            :color="skillColor(skill)"
-          >
-            {{ skill.name }}
-          </dark-chip>
-        </p>
-
         <div class="d-flex flex-grow-1 justify-end">
           <dark-button color="secondary" to="Portfolio">
             View My Portfolio
@@ -141,16 +117,6 @@ export default Vue.extend({
       Api.Skills.getSkills()
         .then((res) => (this.skills = res))
         .finally(() => (this.loading = false));
-    },
-    skillColor(skill: Skill) {
-      switch (skill.type) {
-        case 'language':
-          return 'primary';
-        case 'framework':
-          return 'secondary';
-        default:
-          return 'accent';
-      }
     }
   }
 });
@@ -163,6 +129,9 @@ export default Vue.extend({
     font-size: 1.2em
 
 .v-chip
-  margin-left: 2px
-  margin-bottom: 1px
+  margin-left: 6px
+  margin-bottom: 2px
+
+.v-divider
+  margin-bottom: 16px
 </style>

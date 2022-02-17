@@ -1,6 +1,6 @@
 <template>
-  <v-card>
-    <v-card-title>{{ title }}</v-card-title>
+  <v-card flat>
+    <v-card-title class="pb-2 pt-0">{{ title }}</v-card-title>
     <v-card-text>
       <div v-for="(item, index) in items" :key="index">
         <slot v-bind="item">

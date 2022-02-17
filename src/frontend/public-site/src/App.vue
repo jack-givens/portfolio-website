@@ -122,7 +122,7 @@ export default Vue.extend({
 
 .bg-img
   background-image: url('./assets/headshot.png')
-  background-size: 600px
+  background-size: 63vh
   background-position: bottom
 
   &.img-md,
