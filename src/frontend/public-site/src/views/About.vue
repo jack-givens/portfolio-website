@@ -83,7 +83,8 @@ export default Vue.extend({
       {
         title: 'Operations',
         items: [
-          'Engineered CI/CD pipelines for many platforms',
+          'Engineered CI/CD pipelines on GitHub and GitLab for many different deployment targets',
+          'Drove E2E automation suite using browserstack, appium, and webdriver.io',
           'Managed local development and production environments',
           'Set up observability across multiple types of workloads'
         ]

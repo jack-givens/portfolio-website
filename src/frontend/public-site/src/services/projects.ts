@@ -10,6 +10,21 @@ export type Project = {
 
 const projectData: Project[] = [
   {
+    title: 'Clearcover Car Insurance',
+    subtitle: 'Mobile App for Policyholders',
+    description:
+      'A cross-platform mobile app that allows policyholders to submit claims, make endorsements, and view their auto policy',
+    image: require('../assets/cc.png'),
+    tech: [
+      'React Native',
+      'Firebase',
+      'ExpressJS',
+      'Kubernetes',
+      'Kafka',
+      'PostgreSQL'
+    ]
+  },
+  {
     title: 'Polkie',
     subtitle: 'Social Media Advertising',
     description:
@@ -17,7 +32,7 @@ const projectData: Project[] = [
     image: require('../assets/polkie.png'),
     tech: [
       'React',
-      'React-Native',
+      'React Native',
       'ASP.NET Core',
       'MSSQL',
       'Prometheus',
