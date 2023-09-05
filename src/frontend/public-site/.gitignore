@@ -21,3 +21,9 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# terraform files
+**/*.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
