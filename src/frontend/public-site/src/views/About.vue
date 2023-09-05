@@ -6,9 +6,9 @@
           :avatar="require('../assets/headshot.png')"
           title="Senior Software Engineer"
           name="Jack Givens"
-          experience="4+"
+          experience="5+"
           education="B.S in Computer Science @ WGU"
-          employer="Ayoka Systems"
+          employer="Clearcover"
         />
       </v-col>
       <v-col cols="10" md="6" xl="8" class="main-text">
