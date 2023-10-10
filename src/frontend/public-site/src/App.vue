@@ -8,7 +8,7 @@
             icon
             small
             color="primary"
-            href="https://github.com/H-V-N"
+            href="https://github.com/jack-givens"
             target="_blank"
           >
             <v-icon>mdi-github</v-icon>
